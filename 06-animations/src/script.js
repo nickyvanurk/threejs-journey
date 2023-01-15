@@ -26,7 +26,17 @@ scene.add(camera)
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
+    antialias: true
 })
 renderer.setSize(sizes.width, sizes.height)
-renderer.render(scene, camera)
+
+
+// Animations
+function tick() {
+    mesh.rotation.y += 0.01
+    renderer.render(scene, camera)
+    requestAnimationFrame(tick)
+}
+
+requestAnimationFrame(tick)
