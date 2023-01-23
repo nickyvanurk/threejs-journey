@@ -2,6 +2,19 @@ import './style.css'
 import * as THREE from 'three'
 
 /**
+ * Cursor
+ */
+const cursor = {
+    x: 0,
+    y: 0,
+}
+
+addEventListener('mousemove', (event) => {
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = event.clientY / sizes.height - 0.5
+})
+
+/**
  * Base
  */
 // Canvas
