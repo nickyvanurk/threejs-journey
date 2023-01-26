@@ -15,10 +15,18 @@ const scene = new THREE.Scene()
 // const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2)
 const geometry = new THREE.Geometry()
 
-geometry.vertices.push(new THREE.Vector3())
-geometry.vertices.push(new THREE.Vector3(0, 1, 0))
-geometry.vertices.push(new THREE.Vector3(1, 0, 0))
-geometry.faces.push(new THREE.Face3(0, 1, 2))
+for (let i = 0; i < 50; i++) {
+    for (let j = 0; j < 50; j++) {
+        geometry.vertices.push(new THREE.Vector3(
+            (Math.random() - 0.5) * 4,
+            (Math.random() - 0.5) * 4,
+            (Math.random() - 0.5) * 4,
+        ))
+    }
+
+    const verticesIndex = i * 3
+    geometry.faces.push(new THREE.Face3(verticesIndex, verticesIndex + 1, verticesIndex + 2))
+}
 
 const material = new THREE.MeshBasicMaterial({ 
     color: 0xff0000,
